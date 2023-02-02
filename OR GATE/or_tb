@@ -1,0 +1,18 @@
+module or_tb;
+reg A, B;
+wire Y;
+  or_gate gate(.A(A),.B(B),.Y(Y));
+ initial begin
+   $dumpfile("orgate.vcd");
+   $dumpvars;
+    
+    #10 A=1'b0; #10 B=1'b1;
+    #10 A=1'b1; #10 B=1'b0;
+    #10 A=1'b1;  #10 B=1'b1;
+    #10
+    #10 $finish;
+  end
+  always@(Y or A or B)
+    $monitor("time=%0t \tInputs: A=%b \t B=%b \tOutput: Y=%b", $time, A,B,Y);
+             endmodule
+  
