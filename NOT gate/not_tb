@@ -1,0 +1,17 @@
+module not_tb;
+  reg A;
+  wire Y;
+  not_gate notgate(.A(A), .Y(Y));
+  initial begin
+    $dumpfile("dump.vcd");
+    $dumpvars;
+    
+    #10 A=1'b0;
+    #10 A=1'b1;
+    #10
+    #10 $finish;
+  end
+    
+  always@(*)
+  $monitor("time=%0t \tInput: \tA=%b, \tOutput: \tY=%b", $time, A, Y);
+           endmodule
