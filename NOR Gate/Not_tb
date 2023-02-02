@@ -1,0 +1,19 @@
+module nor_tb;
+  reg A, B;
+  wire Y;
+  nor_gate notgate(.A(A), .B(B), .Y(Y));
+  initial begin
+    $dumpfile("dump.vcd");
+    $dumpvars;
+    
+    #10 A=1'b0; #10 B=1'b0;
+    #10 A=1'b0; #10 B=1'b1;
+    #10 A=1'b1; #10 B=1'b0;
+    #10 A=1'b1; #10 B=1'b1;
+    #10 $finish;
+  end
+    
+  always@(*)
+    $monitor("time=%0t \tInput: \tA=%b, \tB=%b \tOutput: \tY=%b", $time, A, B, Y);
+           endmodule
+  
