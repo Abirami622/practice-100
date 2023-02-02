@@ -1,0 +1,17 @@
+module and_tb;
+  reg A, B;
+  wire Y;
+  and_gate andgate(.A(A), .B(B), .Y(Y));
+  initial begin
+    $dumpfile("and_gate.vcd");
+    $dumpvars;
+    #10 A=1'b0; #10 B=1'b0;
+    #10 A=1'b0; #10 B=1'b1;
+    #10 A=1'b1; #10 B=1'b0;
+    #10 A=1'b1; #10 B=1'b1;
+    #10
+    #10 $finish;
+  end
+  always@(*)
+    $monitor("time= %0t \tInputs: \tA= %b, \tB=%b, \tOutput: \tY=%b, $time, A,B,Y");
+             endmodule
