@@ -1,0 +1,33 @@
+module encoder_tb;
+
+reg Y0, Y1, Y2, Y3;
+
+wire D0, D1;
+
+encoder enc(.Y0(Y0), .Y1(Y1), .Y2(Y2), .Y3(Y3), .D0(D0), .D1(D1));
+
+initial begin
+
+	$dumpfile("encc.vcd");
+
+	$dumpvars;
+
+	#10 Y0=1'b1; #10 Y1=1'b0 ;#10 Y2=1'b0; #10 Y3=1'b0;
+
+	#10 Y0=1'b0; #10 Y1=1'b1; #10 Y2=1'b0; #10 Y3=1'b0;
+
+	#10 Y0=1'b0; #10 Y1=1'b0; #10 Y2=1'b1; #10 Y3=1'b0;
+
+	#10 Y0=1'b0; #10 Y1=1'b0; #10 Y2=1'b0; #10 Y3=1'b1;
+
+	#10
+
+	#10 $finish;
+
+end
+
+always@(*)
+
+	$monitor("time=%0t \tInputs: \tY0=%b,  \tY1=%b, \tY2=%b, \tY3=%b, \tOutput: \tD0=%b, \tD1=%b", $time, Y0, Y1, Y2, Y3, D0, D1);
+
+endmodule
