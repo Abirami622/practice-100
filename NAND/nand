@@ -1,0 +1,9 @@
+module nand_gate(
+
+  input A, B,
+
+  output Y);
+
+  nand(Y, A, B);
+
+endmodule
