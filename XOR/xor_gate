@@ -1,0 +1,9 @@
+module xor_gate(
+
+  input A, B,
+
+  output Y);
+
+  xor(Y, A, B);
+
+endmodule
