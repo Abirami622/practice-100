@@ -1,0 +1,35 @@
+module decoder_tb;
+
+reg EN, A0, A1;
+
+wire D0, D1, D2, D3;
+
+decoder dec_tb(.EN(EN), .A0(A0), .A1(A1), .D0(D0), .D1(D1), .D2(D2), .D3(D3));
+
+initial begin 
+
+	$dumpfile("dec.vcd");
+
+	$dumpvars;
+
+	#10 EN=1'b0; #10 A0=1'b0; #10 A1=1'b0;
+
+	#10 EN=1'b1; #10 A0=1'b0; #10 A1=1'b0;
+
+        #10 EN=1'b1; #10 A0=1'b0; #10 A1=1'b1;
+
+	#10 EN=1'b1; #10 A0=1'b1; #10 A1=1'b0;
+
+        #10 EN=1'b1; #10 A0=1'b1; #10 A1=1'b1;
+
+        #10
+
+        #10 $finish;
+
+end
+
+always@(*)
+
+	$monitor("time=%0t \t Inputs: \tEN=%b, \tA0=%b, \tA1=%b, \tOutput: \tD0=%b, \tD1=%b, \tD2=%b, \tD3=%b", $time, EN, A0, A1, D0, D1, D2, D3);
+
+endmodule
