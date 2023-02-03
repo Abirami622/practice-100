@@ -1,0 +1,33 @@
+module xor_tb;
+
+reg A, B;
+
+wire Y;
+
+xor_gate xorgate(.A(A), .B(B), .Y(Y));
+
+initial begin
+
+	$dumpfile ("xorgate.vcd");
+
+	$dumpvars;
+
+	#10 A=1'b0; #10 B=1'b0;
+
+	#10 A=1'b0; #10 B=1'b1;
+
+	#10 A=1'b1; #10 B=1'b0;
+
+	#10 A=1'b1; #10 B=1'b1;
+
+	#10
+
+	#10 $finish;
+
+end
+
+always@(Y)
+
+	$monitor("time = %0t \tInputs: A=%b, \t B=%b, \tOutput: Y=%b", $time, A, B, Y);
+
+endmodule
