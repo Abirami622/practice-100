@@ -1,4 +1,5 @@
-	input A0, A1, EN,
+module decoder(
+        input A0, A1, EN,
 
 	output D0, D1, D2, D3);
 
