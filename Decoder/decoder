@@ -1,0 +1,13 @@
+	input A0, A1, EN,
+
+	output D0, D1, D2, D3);
+
+and(D0, EN, ~A0, ~A1);
+
+and(D1, EN, ~A0, A1);
+
+and(D2, EN, A0, ~A1);
+
+and(D3, EN, A0, A1);
+
+endmodule
