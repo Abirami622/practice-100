@@ -1,0 +1,43 @@
+module mux_tb;
+
+reg S0, S1, S2, D0, D1, D2, D3, D4, D5, D6, D7;
+
+wire Y;
+
+mux muxtb(.Y(Y), .S0(S0), .S1(S1), .S2(S2), .D0(D0), .D1(D1), .D2(D2), .D3(D3), .D4(D4), .D5(D5), .D6(D6), .D7(D7));
+
+initial begin
+
+	$dumpfile("mux.vcd");
+
+	$dumpvars;
+
+	{D0, D1, D2, D3, D4, D5, D6, D7}=$random%8;
+
+	#10 S0=1'b0; #10 S1=1'b0; #10 S2=1'b0;
+
+	#10 S0=1'b1; #10 S1=1'b0; #10 S2=1'b0;
+
+	#10 S0=1'b0; #10 S1=1'b1; #10 S2=1'b0;
+
+	#10 S0=1'b1; #10 S1=1'b1; #10 S2=1'b0;
+
+	#10 S0=1'b0; #10 S1=1'b0; #10 S2=1'b1;
+
+	#10 S0=1'b1; #10 S1=1'b0; #10 S2=1'b1;
+
+	#10 S0=1'b0; #10 S1=1'b1; #10 S2=1'b1;
+
+	#10 S0=1'b1; #10 S1=1'b1; #10 S2=1'b1;
+
+	#10
+
+	#10 $finish;
+
+end
+
+always@(*)
+
+	$monitor("time=%0t \tInputs: \tS0=%b, \tS1=%b, \tS2=%b, \tD0=%b, \tD1=%b, \tD2=%b, \tD3=%b, \tD4=%b, \tD5=%b, \tD6=%b, \tD7=%b, \tOutput: \tY=%b", $time, S0, S1, S2, D0, D1, D2, D3, D4, D5, D6, D7, Y);
+
+endmodule
