@@ -1,0 +1,23 @@
+	input S0, S1, S2, D0, D1, D2, D3, D4, D5, D6, D7,
+
+	output Y);
+
+and(D0, ~S0, ~S1, ~S2);
+
+and(D1, S0, ~S1, ~S2);
+
+and(D2, ~S0, S1, ~S2);
+
+and(D3, S0, S1, ~S2);
+
+and(D4, ~S0, ~S1, S2);
+
+and(D5, S0, ~S1, S2);
+
+and(D6, ~S0, S1, S2);
+
+and(D7, S0, S1, S2);
+
+or(Y, D0, D1, D2, D3, D4, D5, D6, D7);
+
+endmodule
