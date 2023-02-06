@@ -1,0 +1,33 @@
+module gtb_tb;
+
+reg [3:0]g;
+
+wire [3:0]b;
+
+Gtb gtb_tb(.b(b), .g(g));
+
+initial begin
+
+	$dumpfile("gtb.vcd");
+
+	$dumpvars;
+
+	#10 g=4'b0000;
+
+	#10 g=4'b0001;
+
+	#10 g=4'b0010;
+
+	#10 g=4'b0011;
+
+	#10
+
+	#10 $finish;
+
+end
+
+always@(*)
+
+	$monitor("time=0t%, \tInputs: \tb=%b, \tOutput: \tg=%b", $time, b, g);
+
+endmodule
