@@ -1,0 +1,33 @@
+module b_t_g_tb;
+
+reg [3:0]b;
+
+wire [3:0]g;
+
+btg b_t_g_tb(.b(b), .g(g));
+
+initial begin
+
+	$dumpfile("bcg.vcd");
+
+	$dumpvars;
+
+	#10 b=4'b0000;
+
+	#10 b=4'b0001;
+
+	#10 b=4'b0010;
+
+	#10 b=4'b0011;
+
+	#10
+
+	#10 $finish;
+
+end
+
+always@(*)
+
+	$monitor("time=0t%, \tInputs: \tb=%b, \tOutput: \tg=%b", $time, b, g);
+
+endmodule
